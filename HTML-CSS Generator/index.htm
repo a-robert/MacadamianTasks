@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>HTML/CSS Generator</title>
+	<script src="js/jquery-1.10.0.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<div id="left" oncontextmenu="return false">
+			<div id="root" class="element">Root Container
+				<div class="element" id="element1" style="left: 20px">First Child</div>
+			</div>
+		</div>
+		<div id="right" oncontextmenu="return true">
+			<div class="item" id="rootItem">
+				<div class="item" id="element1Item"></div>
+			</div>
+		</div>
+	</div>
+	<!-- Dropdown and PopUp Menus -->
+	<div style="display:none; position: absolute;" id="popUpMenu">
+		<div class="contextItem" id="add">Add Child</div>
+		<div class="contextItem" id="edit">Edit Style</div>
+		<div class="contextItem" id="delete">Delete</div>
+    </div>
+    <div id="editStyle" class="dropdown">
+    	<form>
+			Style Name: <input type="text" id="styleName"><br>
+			Style Value: <input type="text" id="styleValue">
+			<input value="Submit" class="submit" type="button" id="styleSubmit">
+		</form> 
+    </div>
+    <div id="addItem" class="dropdown">
+    	<form>
+			Element Type: 	<select id="itemType">
+								<option value="a">Link Element</option>
+								<option value="button">Button Element</option>
+							    <option value="div">Div Element</option>
+							    <option value="form">Form Element</option>
+							    <option value="h1">Header1</option>
+							    <option value="h2">Header2</option>
+							    <option value="h3">Header3</option>
+							    <option value="h4">Header4</option>
+							    <option value="h5">Header5</option>
+							    <option value="h6">Header6</option>
+							    <option value="img">Image</option>
+							    <option value="input">Input</option>
+							    <option value="li">Li</option>
+							    <option value="ol">Ol</option>
+							    <option value="a">Link Element</option>
+							    <option value="p">Paragraph</option>
+							    <option value="span">Span Element</option>
+							    <option value="table">Table</option>
+							    <option value="td">Row in Table</option>
+							    <option value="tr">Column in Row</option>
+							    <option value="ul">Ul</option>
+						    </select><br>
+			Element ID: <input type="text" id="itemId"><br>
+			Element Name: <input type="text" id="itemName"><br>
+			Element Content: <input type="text" id="itemContent"><br>
+			<input value="Submit" class="submit" type="button" id="addItemSubmit">
+		</form> 
+    </div>
+    <div id="deleteElement" class="dropdown">
+    	Delete This Element With All Childrens ?
+   		<button id="deleteYes" class="submit">Yes</button>
+   		<button id="deleteNo" class="submit">No</button>
+    </div>
+    <!-- Dropdown and PopUp Menus -->
+</body>
+</html>
