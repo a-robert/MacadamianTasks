@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>DialPad</title>
+	<meta charset="UTF-8"/>
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/knockout-3.1.0.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<div id="phone">
+		<div id="header"></div>
+		<div id="navbar">
+			<div id="contacts" class="navbarItem" data-bind="click: $root.goToContactsTab">Contacts</div>
+			<div id="dialer" class="navbarItem" data-bind="click: $root.goToDialerTab">Dialer</div>
+		</div>
+		<div id="content" style="color: white">
+			<div id="addContact" data-bind="visible: $root.addContactShow">
+				<button id="addButton" data-bind="click: $root.addContact">Add Contact</button>
+			</div>
+			<div id="contactsList">
+				<table>
+					<tbody data-bind="foreach: contacts">
+						<tr data-bind="click: $root.goToFullInfo">
+							<td data-bind="text: name"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="contactAddingForm" data-bind="visible: $root.addContactFormShow">
+				<input type="text" id="newContactName" class="newContactForm"></input>
+				<input type="text" id="newContactNumber" class="newContactForm"></input>
+				<button id="createNewConatact" data-bind="click: $root.addNewContactToList">Add Contact</button>
+			</div>
+			<div data-bind="with: selectedPerson">
+				<button data-bind="click: $root.goToContactsTab">Go Back</button>
+				<div id="contactFullInfo">
+					<div data-bind="text: name"></div>
+					<div data-bind="text: number"></div>
+				</div>
+			</div>
+			<div data-bind="visible: $root.goToDialer" id="dialerUI">
+				<input type="text" id="numberInput"></input>
+				<div id="foundedPersons">
+					<span id="foudnedPersonPicture"><img id="foundedImage"src="img/no-image.png"></span>
+					<span id="personInfo">
+						<div id="foundedName"></div>
+						<div id="foundedNumber"></div>
+					</span>
+					<span id="foundedCount"></span>
+				</div>	
+				<div id="buttons">
+					<div id="buttonNumbers">
+						<span class="buttonsRow" id="firstButtonsRow">
+							<button class="numberButton"><span class="number">1</span><span class="text"></span></button>
+							<button class="numberButton"><span class="number">4</span><span class="text">GHI</span></button>
+							<button class="numberButton"><span class="number">7</span><span class="text">PQRS</span></button>
+							<button class="numberButton"><span class="number">*</span><span class="text"></span></button>
+						</span>
+						<span class="buttonsRow" id="secondButtonsRow">
+							<button class="numberButton"><span class="number">2</span><span class="text">ABC</span></button>
+							<button class="numberButton"><span class="number">5</span><span class="text">JKL</span></button>
+							<button class="numberButton"><span class="number">8</span><span class="text">TUV</span></button>
+							<button class="numberButton"><span class="number">0</span><span class="text"></span></button>
+						</span>
+						<span class="buttonsRow" id="thirdButtonsRow">
+							<button class="numberButton"><span class="number">3</span><span class="text">DEF</span></button>
+							<button class="numberButton"><span class="number">6</span><span class="text">MNO</span></button>
+							<button class="numberButton"><span class="number">9</span><span class="text">WXYZ</span></button>
+							<button class="numberButton"><span class="number">#</span><span class="text"></span></button>
+						</span>
+					</div>
+					<div id="buttonActions">
+						<button id="call">Call</button>
+						<button id="addToContacts" class="numberButton">add</button>
+						<button id="sendMsg" class="numberButton">msg</button>
+						<button id="deleteNumber" class="numberButton">del</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>
