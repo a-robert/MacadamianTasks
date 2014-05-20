@@ -12,13 +12,13 @@ function ContactsModelView () {
 		new Person("Robert Asaturyan", "077504950")
 	];
 
-	self.contacts = ko.observableArray(personList);
+	self.contacts = ko.observableArray(null);
 
-	self.addContactShow = ko.observable(true);
+	self.addContactShow = ko.observable(false);
 
 	self.selectedPerson = ko.observable(null);
 
-	self.goToDialer = ko.observable(false);
+	self.goToDialer = ko.observable(true);
 
 	self.addContactFormShow = ko.observable(false);
 

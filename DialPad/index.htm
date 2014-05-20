@@ -9,29 +9,42 @@
 </head>
 <body>
 	<div id="phone">
+
 		<div id="header"></div>
+
+		<!-- Navigation bar -->
 		<div id="navbar">
-			<div id="contacts" class="navbarItem" data-bind="click: $root.goToContactsTab">Contacts</div>
 			<div id="dialer" class="navbarItem" data-bind="click: $root.goToDialerTab">Dialer</div>
+			<div id="contacts" class="navbarItem" data-bind="click: $root.goToContactsTab">Contacts</div>
 		</div>
+
+		<!-- Phone Content -->
 		<div id="content" style="color: white">
+
+			<!-- Button For Contact Adding -->
 			<div id="addContact" data-bind="visible: $root.addContactShow">
 				<button id="addButton" data-bind="click: $root.addContact">Add Contact</button>
 			</div>
+
+			<!-- List Of Contacts In Phone -->
 			<div id="contactsList">
-				<table>
+				<table id="contactsTable">
 					<tbody data-bind="foreach: contacts">
 						<tr data-bind="click: $root.goToFullInfo">
-							<td data-bind="text: name"></td>
+							<td data-bind="text: name" class="contactItem"></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
+
+			<!-- Contact Adding Form -->
 			<div id="contactAddingForm" data-bind="visible: $root.addContactFormShow">
 				<input type="text" id="newContactName" class="newContactForm"></input>
 				<input type="text" id="newContactNumber" class="newContactForm"></input>
 				<button id="createNewConatact" data-bind="click: $root.addNewContactToList">Add Contact</button>
 			</div>
+
+			<!-- See Contact Full Info -->
 			<div data-bind="with: selectedPerson">
 				<button data-bind="click: $root.goToContactsTab">Go Back</button>
 				<div id="contactFullInfo">
@@ -39,6 +52,8 @@
 					<div data-bind="text: number"></div>
 				</div>
 			</div>
+
+			<!-- Dialer Container -->
 			<div data-bind="visible: $root.goToDialer" id="dialerUI">
 				<input type="text" id="numberInput"></input>
 				<div id="foundedPersons">
@@ -49,7 +64,7 @@
 					</span>
 					<span id="foundedCount"></span>
 				</div>	
-				<div id="buttons">
+				<div id="buttonsContainer">
 					<div id="buttonNumbers">
 						<span class="buttonsRow" id="firstButtonsRow">
 							<button class="numberButton"><span class="number">1</span><span class="text"></span></button>
@@ -77,8 +92,14 @@
 						<button id="deleteNumber" class="numberButton">del</button>
 					</div>
 				</div>
+
+			<!-- End Of Buttons in Dialer -->	
 			</div>
+
+		<!-- End Of Phone Content -->
 		</div>
+
+		<!-- End Of Phone -->
 	</div>
 	<script type="text/javascript" src="js/script.js"></script>
 </body>
