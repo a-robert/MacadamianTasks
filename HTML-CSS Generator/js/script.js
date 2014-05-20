@@ -2,9 +2,27 @@ $(document).ready(function () {
 	var selectedId;
 	var selectedItem;
 	var elementID = ["element1"];
-	var elementNumber = 1;
+	var elementNumber = 0;
 
-	$(".element").on('contextmenu', function (e) {
+	$('#left').on('mouseover','.element', function (e) {
+		var elementStyle;
+		$("#showElementStyle").css("top",e.pageY);
+  		$("#showElementStyle").css("left",e.pageX);
+  		if ($('#' + $(this).attr('id') + 'Item').attr('style')) {
+  			elementStyle = 'Style:<br>' + $('#' + $(this).attr('id') + 'Item').attr('style');
+  		} else {
+  			elementStyle = 'This Element Has No Style';
+  		};
+		$("#showElementStyle").html(elementStyle);
+		$("#showElementStyle").show();
+		e.stopPropagation();
+	});
+
+	$("#left").on('mouseout','.element',function(){
+		$('#showElementStyle').hide();
+	});
+
+	$("#left").on('contextmenu', '.element', function (e) {
 		selectedId = $(this).attr('id');
 		selectedItem = $(this).attr('id') + "Item";
 		$("#popUpMenu").css("top",e.pageY);
@@ -53,16 +71,34 @@ $(document).ready(function () {
 			case "a": {
 				var href = prompt("Please Enter Link Value");
 				newElementItem.attr('href', href);
+				newElement.append($('<img src="img/link.png" class="icon"/>'));
+				break;
+			}
+
+			case 'div': {
+				newElement.append($('<img src="img/div.png" class="icon"/>'));
+				break;
+			}
+
+			case 'button': {
+				newElement.append($('<img src="img/button.png" class="icon"/>'));
+				break;
+			}
+
+			case 'span': {
+				newElement.append($('<img src="img/span.png" class="icon"/>'));
 				break;
 			}
 
 			case "img": {
 				var source = prompt("Please Enter Image Source");
 				newElementItem.attr('src', source);
+				newElement.append($('<img src="img/img-icon.png" class="icon"/>'));
 				break;
 			}
 
 			default: {
+				newElement.append($('<img src="img/default_icon.png" class="icon"/>'));
 				break;
 			}
 		}
