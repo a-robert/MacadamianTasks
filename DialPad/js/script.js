@@ -22,6 +22,8 @@ function ContactsModelView () {
 
 	self.addContactFormShow = ko.observable(false);
 
+	self.number = ko.observable("");
+
 	self.goToDialerTab = function () {
 		self.contacts(null);
 		self.goToDialer(true);
@@ -61,6 +63,22 @@ function ContactsModelView () {
 		self.addContactShow(true);
 		self.addContactFormShow(false);
 	}
+
+	self.addNumber = function(data, event) {
+
+        console.log("you clicked ");
+        for(var i = 0; i < personList.length; i++) {
+			console.log(self.number());
+			if (personList[i].number.indexOf(self.number())) {
+				console.log(personList[i].number);
+			}
+		}
+    }
 }
 
 ko.applyBindings(new ContactsModelView ());
+
+//$('.numberButton').click(function () {
+//	var buttonValue =$(this).text().slice(0,1);
+//	$('#numberInput').val($('#numberInput').val() + buttonValue);
+//});
