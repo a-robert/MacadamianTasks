@@ -1,0 +1,270 @@
+@phone-height: 650px; 
+@phone-width: 400px;
+@tab-height: 80px;
+.cool-button() {
+    -moz-box-shadow:inset 0px 1px 0px 0px #000000;
+    -webkit-box-shadow:inset 0px 1px 0px 0px #000000;
+    box-shadow:inset 0px 1px 0px 0px #000000;
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #4a494a), color-stop(1, #211421) );
+    background:-moz-linear-gradient( center top, #4a494a 5%, #211421 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4a494a', endColorstr='#211421');
+    background-color:#4a494a;
+    -webkit-border-top-left-radius:22px;
+    -moz-border-radius-topleft:22px;
+    border-top-left-radius:22px;
+    -webkit-border-top-right-radius:22px;
+    -moz-border-radius-topright:22px;
+    border-top-right-radius:22px;
+    -webkit-border-bottom-right-radius:22px;
+    -moz-border-radius-bottomright:22px;
+    border-bottom-right-radius:22px;
+    -webkit-border-bottom-left-radius:22px;
+    -moz-border-radius-bottomleft:22px;
+    border-bottom-left-radius:22px;
+    text-indent:0;
+    border:1px solid #000000;
+    display:inline-block;
+    color:#d6d6d6;
+    font-family:arial;
+    font-size:15px;
+    font-weight:bold;
+    font-style:normal;
+    height:27px;
+    line-height: 20px;
+    width: 120px;
+    text-decoration:none;
+    text-align:center;
+    text-shadow:1px 1px 0px #141214;
+    cursor: pointer;
+}
+
+#phone {
+    position: relative;
+    margin: 0px auto;
+    width: @phone-width;
+    height: @phone-height;
+    background-color: black;
+    #header {
+        position: absolute;
+        width: 100%;
+        height: 25px;
+        background-color: gray;
+    }
+    #navbar {
+        position: absolute;
+        width: 100%;
+        height: @tab-height;
+        top: 25px;
+        background-color: rgba(239, 231, 231, 0.55);
+        cursor: pointer;
+        #dialerTab {
+            position: absolute;
+            width: @phone-width/2;
+            height: @tab-height;
+            background-image: url('../img/dialer.png');
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        #contactsTab {
+            width: @phone-width/2;
+            height: @tab-height;
+            position: absolute;
+            left: @phone-width/2;
+            background-image: url('../img/contacts.png');
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
+    #content {
+        position: absolute;
+        width: 100%;
+        height: @phone-height - 105px;
+        top: 105px;
+        background-color: gray;
+        #dialpad {
+            background-color: black;
+            width: @phone-width;
+            height: @phone-height - 105px;
+            #inputedNumber {
+                color: white;
+                font-size: 40px;
+                text-align: center;
+                position: absolute;
+                top: 5px;
+                width: @phone-width;
+                height: @tab-height;
+                background-color: black;
+                border: none;
+            }
+            #founded {
+                position: absolute;
+                top: @tab-height + 5px;
+                width: @phone-width;
+                height: @tab-height;
+                background-color: gray;
+                border-radius: 10px;
+                #founded-person {
+                    position: absolute;
+                    width: 80%;
+                    height: @tab-height;
+                    border-right: 1px dotted black;
+                    #first-founded-name {
+                        text-align: center;
+                        height: 40px;
+                        line-height: 40px;
+                    }
+                    #first-founded-number {
+                        text-align: center;
+                        height: 40px;
+                        line-height: 40px;
+                    }
+                }
+                #founded-count {
+                    position: absolute;
+                    width: 20%;
+                    height: @tab-height;
+                    left: 80%;
+                    text-align: center;
+                    line-height: @tab-height;
+                    font-size: 20px;
+                    cursor: pointer;
+                }
+            }
+            #allFoundedPersons {
+                position: absolute;
+                top: 160px;
+                color: white;
+            }
+            #buttons-container {
+                top: 170px;
+                color: #FFF;
+                position: relative;
+                width: 400px;
+                line-height: 60px;
+                height: 375px;
+                #firstRow {
+                    width: 30%;
+                    position: absolute;
+                    height: 300px;
+                }
+                #secondRow {
+                    position: absolute;
+                    width: 30%;
+                    left: 35%;
+                }
+                #thirdRow {
+                    position: absolute;
+                    width: 30%;
+                    left: 70%;
+                }
+                .buttonNumbers {
+                    cursor: pointer;
+                    margin: 7px;
+                    background-color: gray;
+                    text-align: center;
+                    border-radius: 5px;
+                    height: 65px;
+                    line-height: 65px;
+                    .number {
+                        position: absolute;
+                        left: 20px;
+                        font-size: 40px;
+                    }
+                    .text {
+                        color: #B8B8B8;
+                        position: absolute;
+                        left: 45px;
+                    }
+                }
+                #actions {
+                    position: absolute;
+                    bottom: 0px;
+                    width: 100%;
+                    height: @tab-height;
+                    #call {
+                        position: absolute;
+                        left: 2%;
+                        height: @tab-height - 10px;
+                        width: 26%;
+                        background-color: green;
+                        text-align: center;
+                        line-height: 70px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        background-image: url('../img/call.png');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                    #addToContacts {
+                        position: absolute;
+                        left: 37%;
+                        height: 70px;
+                        background-color: gray;
+                        width: 64px;
+                        text-align: center;
+                        line-height: 70px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        background-image: url('../img/contacts.png');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                    #sendMsg {
+                        position: absolute;
+                        left: 56%;
+                        height: 70px;
+                        background-color: gray;
+                        width: 70px;
+                        text-align: center;
+                        line-height: 70px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        background-image: url('../img/send-msg.png');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                    #deleteNumber {
+                        position: absolute;
+                        left: 77%;
+                        height: 70px;
+                        background-color: gray;
+                        width: 84px;
+                        text-align: center;
+                        line-height: 70px;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        background-image: url('../img/302.png');
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                }
+            }
+        }
+        #contacts {
+            #addContact {
+                position: absolute;
+                right: 10px;
+                .cool-button()
+            }
+        }
+        #contactAddingForm {
+            position: relative;
+            top: 100px;
+            height: 180px;
+            width: 100%;
+            .newContactForm {
+                position: absolute;
+                width: 80%;
+                left: 35px;
+                height: 40px;
+                text-align: center;
+            }
+            #createNewConatact {
+                position: absolute;
+                margin: 100px auto;
+                left: 150px;
+                .cool-button();
+            }
+        }
+    }
+}

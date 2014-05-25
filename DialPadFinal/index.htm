@@ -1,0 +1,95 @@
+<html>
+<head>
+    <title>DialPad</title>
+    <meta charset="UTF-8"/>
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/knockout-3.1.0.js"></script>
+    <link rel="stylesheet" type="text/less" href="css/style.less">
+    <script type="text/javascript" src="js/less.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/boot.js"></script>
+</head>
+<body>
+    <div id="phone">
+
+        <div id="header"></div>
+
+        <div id="navbar">
+            <span id="dialerTab" data-bind="click: $root.setCurrentTabDialer"></span>
+            <span id="contactsTab" data-bind="click: $root.setCurrentTabContacts"></span>
+        </div>
+
+        <div id="content">
+            
+            <div id="dialpad" data-bind="visible: $root.currentTab() === 0">
+                
+                <input type="text" id="inputedNumber" data-bind="value: inputedNumber"></input>
+
+                <div id="founded">
+                    <div id="founded-person">
+                        <div id="first-founded-name" data-bind="text: foundedFirstPersonName"></div>
+                        <div id="first-founded-number" data-bind="text: foundedFirstPersonNumber"></div>
+                    </div>
+                    <div id="founded-count" data-bind="text: foundedPersonsCount, click: showPersons"></div>
+                </div>
+
+                <div id="allFoundedPersons" data-bind="visible: showAllFoundedPersons()">
+                    <ul data-bind="foreach: $root.foundedPersons">
+                        <li>
+                            <div data-bind="text: name"></div>
+                            <div data-bind="text: number"></div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="buttons-container" data-bind="visible: !showAllFoundedPersons()">
+                    <div id="numbers">
+                        <span id="firstRow" data-bind="foreach: $root.buttonsColumn1">
+                            <div class="buttonNumbers" data-bind="click: $root.addNumberToDialer">
+                                <span class="number" data-bind="text: number">></span>
+                                <span class="text" data-bind="text: text">></span>
+                            </div>
+                        </span>
+                        <span id="secondRow" data-bind="foreach: $root.buttonsColumn2">
+                            <div class="buttonNumbers" data-bind="click: $root.addNumberToDialer">
+                                <span class="number" data-bind="text: number">></span>
+                                <span class="text" data-bind="text: text">></span>
+                            </div>
+                        </span>
+                        <span id="thirdRow" data-bind="foreach: $root.buttonsColumn3">
+                            <div class="buttonNumbers" data-bind="click: $root.addNumberToDialer">
+                                <span class="number" data-bind="text: number">></span>
+                                <span class="text" data-bind="text: text">></span>
+                            </div>
+                        </span>
+                    </div>
+                    <div id="actions">
+                        <div id="call"></div>
+                        <div id="addToContacts" class="actionButton"></div>
+                        <div id="sendMsg" class="actionButton"></div>
+                        <div id="deleteNumber" class="actionButton" data-bind="click: $root.deleteInputedLastNumber"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="contacts" data-bind="visible: $root.currentTab() === 1">
+                <button id="addContact" data-bind="click: $root.addContact">Add Contact</button>
+                <ul data-bind="foreach: $root.contacts">
+                    <li>
+                        <div data-bind="text: name"></div>
+                        <div data-bind="text: number"></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="contactAddingForm" data-bind="visible: $root.currentTab() === 2">
+                <input type="text" class="newContactForm" data-bind="value: addNewContactName" placeholder="Name"></input>
+                <input type="text" class="newContactForm" data-bind="value: addNewContactNumber" style="margin-top: 50px" placeholder="Number"></input>
+                <button id="createNewConatact" data-bind="click: $root.addNewContactToList">Add Contact</button>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
