@@ -33,7 +33,7 @@ function ContactDialerViewModel () {
 
     this.buttonsColumn3 = ko.observableArray([
         {"number":3, "text":'DEF'},
-        {"number":5, "text":'JKL'},
+        {"number":6, "text":'MNO'},
         {"number":9, "text":'WXYZ'},
         {"number":"#", "text":""}
     ]);
