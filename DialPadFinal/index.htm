@@ -34,7 +34,7 @@
                 </div>
 
                 <div id="allFoundedPersons" data-bind="visible: showAllFoundedPersons()">
-                    <ul data-bind="foreach: $root.foundedPersons">
+                    <ul data-bind="foreach: $root.foundedPersonsList">
                         <li>
                             <div data-bind="text: name"></div>
                             <div data-bind="text: number"></div>
@@ -74,8 +74,8 @@
             </div>
 
             <div id="contacts" data-bind="visible: $root.currentTab() === 1">
-                <button id="addContact" data-bind="click: $root.addContact">Add Contact</button>
-                <ul data-bind="foreach: $root.contacts">
+                <button id="goToAddContactsForm" data-bind="click: $root.goToAddContactsForm">Add Contact</button>
+                <ul data-bind="foreach: $root.contactList">
                     <li>
                         <div data-bind="text: name"></div>
                         <div data-bind="text: number"></div>

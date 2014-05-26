@@ -38,13 +38,12 @@ function ContactDialerViewModel () {
         {"number":"#", "text":""}
     ]);
 
-    var contactList = [
+    this.contactList = ko.observableArray([
         new Person("Robert", "077504950")
-    ];
+    ]);
 
-    this.contacts = ko.observableArray(contactList);
 
-    this.addContact = function () {
+    this.goToAddContactsForm = function () {
         self.currentTab(2);
     }
 
@@ -56,9 +55,8 @@ function ContactDialerViewModel () {
 
     this.addNewContactToList = function () {
         if (!isNaN(self.addNewContactNumber()) && self.addNewContactName()) {
-            contactList.push(new Person(self.addNewContactName(), self.addNewContactNumber()));
-            self.contacts(contactList);
-            self.currentTab(1);
+            self.contactList.push(new Person(self.addNewContactName(), self.addNewContactNumber()));
+            self.setCurrentTabContacts();
         } else {
             alert('Please Add Valid Name And Number');
         }
@@ -73,40 +71,36 @@ function ContactDialerViewModel () {
         self.inputedNumber(self.inputedNumber().substring(0, self.inputedNumber().length - 1));
     }
 
-    var foundedPersonsList = [];
-
-    this.foundedPersons = ko.observableArray(foundedPersonsList);
-
     this.foundedFirstPersonName = ko.observable("");
 
     this.foundedFirstPersonNumber = ko.observable("");
 
     this.foundedPersonsCount = ko.observable("");
 
-    this.inputedNumber.subscribe(function(newNumber) {
-        foundedPersonsList = [];
-        self.foundedFirstPersonName("");
+    this.foundedPersonsList = ko.computed(function () {
+    	var foundedPerson = [];
+    	self.foundedFirstPersonName("");
         self.foundedFirstPersonNumber("");
         self.foundedPersonsCount("");
-        if (newNumber.length !== 0) {
-            for(var i = 0; i < contactList.length; i++) {
-                if (contactList[i].number.indexOf(newNumber) >= 0) {
-                    foundedPersonsList.push(contactList[i]);
-                    self.foundedFirstPersonName(foundedPersonsList[0].name);
-                    self.foundedFirstPersonNumber(foundedPersonsList[0].number);
-                    self.foundedPersonsCount(foundedPersonsList.length);
-                };
-            }
+        if (self.inputedNumber().length !== 0) {
+        	for(var i = 0; i < self.contactList().length; i++) {
+        		if (self.contactList()[i].number.indexOf(self.inputedNumber()) >= 0) {
+        			foundedPerson.push(self.contactList()[i]);
+        			self.foundedFirstPersonName(foundedPerson[0].name);
+                    self.foundedFirstPersonNumber(foundedPerson[0].number);
+                    self.foundedPersonsCount(foundedPerson.length);
+        		};
+        	}
         };
-    });
+        return foundedPerson;
+    })
 
     this.showAllFoundedPersons = ko.observable(false);
 
     this.showPersons = function () {
-        if (foundedPersonsList.length > 0) {
+        if (self.foundedPersonsList().length > 0) {
             self.showAllFoundedPersons(!self.showAllFoundedPersons());
         };
-        self.foundedPersons(foundedPersonsList);
     }
 
 }
